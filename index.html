@@ -1,13 +1,15 @@
 <html>
 <head>
 	<title>Index</title>
+	<!--	LINKS/METAS		-->
 	<meta charset="utf-8">
 	<link href="style1.css" type="text/css" rel="stylesheet"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--<meta name="viewport" content="width=device-width, initial-scale=1"> -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/bootstrap.css" media="screen">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/assets/css/custom.min.css">
-	
+	<!--	SCRIPTS		-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<style type="text/css">
 		.bs-component{
 			width: 50%;
@@ -29,34 +31,42 @@
 			margin: auto;
 			text-align: center;
 		}
+		
 	</style>
 	<script>
-
-     var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-23019901-1']);
-      _gaq.push(['_setDomainName', "bootswatch.com"]);
-        _gaq.push(['_setAllowLinker', true]);
-      _gaq.push(['_trackPageview']);
-
-     (function() {
-       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-     })();
-
+    var isMenuOpen = false;
+	 function openNavBar() {
+		if(!isMenuOpen){
+			document.getElementById("mySidenav").style.width = "250px";
+			document.getElementById("main").style.marginLeft = "250px";
+			isMenuOpen = true;
+		} else if(isMenuOpen){
+			document.getElementById("mySidenav").style.width = "0";
+			document.getElementById("main").style.marginLeft= "0";
+			isMenuOpen = false;
+		}
+	}
     </script>
+	
 </head>
-<div id="wrapper">
-<header>
-<span><h1 class="header">Jon's website</h1></span>
-</header>
-<nav><!-- Vertical nav bar-->
-<ul>
-	<li><a href="jm_autobio.html">Autobiography</a></li>
-	<li><a href="jm_family_tree.html">Family Tree</a></li>
-	<li><a href="jm_hobbies.html">Hobbies</a></li>
-	<li><a href="jm_gallery.html">Gallery</a></li>
-	<li><a href="jm_future.html">Future</a></li>
-</ul>
-</nav>
-
+<body>
+	 <div id="mySidenav" class="menuNavBar">
+		<div class="inner-nav-wrapper">
+			<header>
+			<span><h1 class="header">Jon's website</h1></span>
+			</header>
+			<!-- Vertical nav bar-->
+				<nav>
+					<ul>
+						<li><a href="jm_autobio.html">About Me</a></li>
+						<li><a href="jm_family_tree.html">Blog</a></li>
+						<li><a href="jm_hobbies.html">Experiments</a></li>
+						<li><a href="jm_gallery.html">Contact</a></li>
+					</ul>
+				</nav>
+				<a href = "#" class = "nav-drag-out-btn"></a>
+		</div>
+	</div>
+<div id="main">
+  <span style="font-size:30px;cursor:pointer" onclick="openNavBar()">&#9776;</span>
+</div>
