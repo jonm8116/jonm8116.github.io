@@ -1,75 +1,146 @@
+<!DOCTYPE html>
 <html>
 <head>
-	<title>Index</title>
-	<!--	LINKS/METAS		-->
+	<title>Hey!</title>
 	<meta charset="utf-8">
-	<link href="style1.css" type="text/css" rel="stylesheet"/>
-	<!--<meta name="viewport" content="width=device-width, initial-scale=1"> -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/bootstrap.css" media="screen">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/assets/css/custom.min.css">
-	<!--	SCRIPTS		-->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css";>
+	<link rel="stylesheet" href="bootstrap/carousel.css">
+	<link rel="stylesheet" href="style.css">
 	<style type="text/css">
-		.bs-component{
-			width: 50%;
-			margin: auto;
-		}
-		/*.form-horizontal{
-			width: 50%;
-		}*/
-		body{
-			overflow: scroll; 
-			position: absolute;
-			padding: 0;
-			margin: 0;
-		}
-		#header{
-			text-align: center;
-		}
-		.form-group{
-			margin: auto;
-			text-align: center;
+		#about-me-desc{
+
+			border-style: solid;
+			border-size: 20px;
+			color: white;
+			background-image: url(Images/bg4.jpg);
+			width: 100%;
 		}
 		
+		#xc{
+		
+		}
+		.carousel-inner{
+			height: 700px !important;
+			bottom: 0%;
+			background-color: black;
+		}
+		#disc{
+			color: white;
+		}
 	</style>
 	<script>
-    var isMenuOpen = false;
-	 function openNavBar() {
-		if(!isMenuOpen){
-			document.getElementById("mySidenav").style.width = "250px";
-			document.getElementById("main").style.marginLeft = "250px";
-			isMenuOpen = true;
-		} else if(isMenuOpen){
-			document.getElementById("mySidenav").style.width = "0";
-			document.getElementById("main").style.marginLeft= "0";
-			isMenuOpen = false;
-		}
-	}
-    </script>
-	
+		$(function(){
+		  // You used .myCarousel here. 
+		  // That's the class selector not the id selector,
+		  // which is #myCarousel
+		  $('#myCarousel').carousel();
+		});
+	</script>
 </head>
 <body>
-	 <div id="mySidenav" class="menuNavBar">
-		<div class="inner-nav-wrapper">
-			<header>
-			<span><h1 class="header">Jon's website</h1></span>
-			</header>
-			<!-- Vertical nav bar-->
-				<nav>
-					<ul>
-						<li><a href="about_me.html">About Me</a></li>
-						<li><a href="blog.html">Blog</a></li>
-						<li><a href="experiments.html">Experiments</a></li>
-						<li><a href="contact.html">Contact</a></li>
-					</ul>
-				</nav>
-				<a href = "#" class = "nav-drag-out-btn"></a>
+<!--	TOP NAVBAR FOR RESOURCE LINKS	-->
+	<nav class="navbar navbar-default navbar-fixed-top" id="top-nav">
+		<div class="container">
+			<ul class="nav navbar-nav">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="about.html">About Me</a></li>
+				<li><a href="blog.html">Blog</a></li>
+				<li><a href="contact.html">Contact Me</a></li>
+			</ul>
+		</div>
+	</nav>
+<!--	CAROUSEL FOR IMG ROTATION IN SITE	-->
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		<!--<div class="picture">
+			<img class="img-responsive" id="first-banner" src="Images/solo_man.jpg" />
+		</div>-->
+		
+		<div class="carousel-inner" role="listbox">
+			<div class="item active">
+				<img class="first-slide" id="first-banner" src="Images/solo_man.jpg" />
+				<div class="container">
+					<div class="carousel-caption" id="carousel-first-block">
+						<h1>Welcome</h1>
+						<!--DESCRIPTION-->
+						<p>Hi my name is Jon</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<!--	SECOND COMPONENT	-->
+	 <div class="row featurette" id="disc">
+		<div class="col-md-7 col-md-push-5">
+		  <h2 class="featurette-heading">About Me</h2>
+		  <p class="lead">
+		  My name is Jonathan Mathai and I'm currently a computer science major on a premedical track at 
+			Stony Brook University. I'm a Long Island native and have thoroughly enjoyed my time growing up
+			here on the island. Before coming into college I wasn't entirely sure about my career path and 
+			where exactly I wanted to go with my life in the future. Choosing to major in computer science was 
+			a choice I made in part to seeing some of my friends in high school code. Seeing the software they 
+			were able to produce as the fruits of their labor piqued my interest in the field of computer science. 
+				</p>
+				<p class="lead">
+			At Stony Brook, I want to maximize most of my time into becoming the ideal person I wish to 
+			see myself as in the future. I wish to explore the many opportunities that the university 
+			has to offer and I hope to develop lifelong relationships here that I will carry with me after college. 
+			</p>
+				</p>
+		</div>
+		
+	  </div>
+	<!--	THIRD COMPONENT		-->
+	<div id="about-me-desc" class="container marketing">
+		<div id="xc" class="row">
+			<div class="col-lg-4">
+			<!--	Skills	-->
+			<h2>Skills</h2>
+				<p><h4>Intermediate</h4></p>
+				<ul>
+					<li>Java</li>
+					<li>HTML5/CSS</li>
+					<li>Git</li>
+					<li>Latex</li>
+					<li>JavaScript</li>
+				</ul>
+				<p><h4>Beginner</h4></p>
+				<ul>
+					<li>Python</li>
+					<li>PHP</li>
+					<li>MySQL</li>
+				</ul>
+			</div>
+			<div class="col-lg-4">
+				<h2>Hobbies</h2>
+				<ul>
+					<li>Drawing</li>
+					<li>Writing</li>
+					<li>Learning new things</li>
+					<li>Meeting new people</li>
+					<li>Travel</li>
+				</ul>
+			</div><!-- /.col-lg-4 -->
+			<div class="col-lg-4">
+				<h2>Interests</h2>
+				<ul>
+					<li>Web Development</li>
+					<li>Machine Learning</li>
+					<li>Engineering</li>
+					<li>Bioinformatics</li>
+					<li>Medicine</li>
+					<li>Psychology</li>
+					<li>Philosophy</li>
+				</ul>
+			</div><!-- /.col-lg-4 -->
+		  </div><!-- /.row -->
 		</div>
 	</div>
-<div id="main">
-  <span style="font-size:30px;cursor:pointer" onclick="openNavBar()">&#9776;</span>
-	  <p class="main-intro">
-		Hey how goes it?
-	  <p>
-</div>
+<!--	SCRIPT TAGS		-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://bootstrapdocs.com/v3.3.5/docs/dist/js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="https://bootstrapdocs.com/v3.3.5/docs/assets/js/vendor/holder.min.js"></script>
+	<script src="https://bootstrapdocs.com/v3.3.5/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
+	
+</body>

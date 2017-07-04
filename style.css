@@ -1,0 +1,29 @@
+/*THIS CSS FILE IS FOR ALL PAGES CONTAINED WITHIN THE PORTFOLIO SITE*/
+#top-nav{
+	background-color: #101010;
+}
+#first-banner{
+	height: 650px;
+	width: 100px;
+}
+
+#carousel-first-block{
+	top: 20%;
+}
+#about-me-desc{
+	background-color: #304060;
+}
+#disc{
+	background-color: #304060;
+	width: 101.1%;
+}
+.col-lg-4 ul{
+	list-style: none;
+	font-size: 14pt;
+}
+/*
+LIST OF POSSIBLE COLOR PALETTES:
+- GRAY: #9ea9b9
+- gulf blue?: #304060
+
+*/
