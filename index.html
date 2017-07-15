@@ -6,7 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css";>
 	<link rel="stylesheet" href="bootstrap/carousel.css">
-	<link rel="stylesheet" href="style.css">
 	<style type="text/css">
 		#about-me-desc{
 
@@ -28,13 +27,44 @@
 		#disc{
 			color: white;
 		}
+		.soc-cent{
+			text-align: center;
+		}
+		.soc-med-list{
+			text-align: center;
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			
+		}
+		.soc-med-list > li{
+			display: inline-block;
+			zoom:1;
+			*display:inline;
+			padding: 5;
+		}
+		img{
+			height: 300px;
+			width: 500px;
+			border-radius: 5px;
+			text-align: center;
+		}
 	</style>
 	<script>
-		$(function(){
-		  // You used .myCarousel here. 
-		  // That's the class selector not the id selector,
-		  // which is #myCarousel
-		  $('#myCarousel').carousel();
+		$(document).ready(function(){
+			$('a[href^="#"]').on('click', function(e){
+				
+				e.preventDefault();
+				var target = this.hash;
+				var $target = $(target);
+				
+				$('html, body').animate({
+					'scrollTop': $target.offset().top
+				}, 1000, 'swing');
+			})
+		
+		
 		});
 	</script>
 </head>
@@ -44,9 +74,10 @@
 		<div class="container">
 			<ul class="nav navbar-nav">
 				<li><a href="index.html">Home</a></li>
-				<li><a href="about.html">About Me</a></li>
+				<li><a href="#aboutme">About Me</a></li>
 				<li><a href="blog.html">Blog</a></li>
-				<li><a href="contact.html">Contact Me</a></li>
+				<li><a href="#projects">Projects</a></li>
+				<li><a href="#socialmedia">Contact Me</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -135,6 +166,45 @@
 			</div><!-- /.col-lg-4 -->
 		  </div><!-- /.row -->
 		</div>
+		<!--	ANOTHER COMPONENT	-->
+		<div class="container-fluid">
+			<h2 class="soc-cent">Projects</h2>
+			<p class="lead soc-cent">
+			This was just a really dumb quick project I made
+			for the mhacks online hackathon. Didn't have too much
+			time to work on it that week. So this was made over around
+			5 hours.
+			</p>
+			<div class="picture soc-cent">
+				<img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/000/516/783/datas/gallery.jpg" />
+			</div>
+		</div>
+		<!--	NEXT COMPONENT	-->
+		<div class="container-fluid">
+			<div class="social-media">
+				<div class="container-fluid">
+				<h2 class="soc-cent">Social Media</h2>
+				<p class="lead soc-cent">
+					You can see more about what I'm doing here
+					<p></p>
+					<ul class="soc-med-list">
+						<li>
+						 <a class="btn btn-social-icon btn-sm btn-github" href="https://github.com/jonm8116">
+							<i class="fa fa-github"></i>
+						</a></li>
+						<li>
+						 <a class="btn btn-social-icon btn-sm btn-bitbucket" href="https://bitbucket.org/JonathanMathai219/">
+							<i class="fa fa-bitbucket"></i>
+						</a></li>
+						<li>
+						 <a class="btn btn-social-icon btn-sm btn-instagram" href="https://www.instagram.com/jonm831/">
+							<i class="fa fa-instagram"></i>
+						</a></li>
+					</ul>
+				</p>
+				</div>
+			</div>
+		</div>
 	</div>
 <!--	SCRIPT TAGS		-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -142,5 +212,8 @@
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     <script src="https://bootstrapdocs.com/v3.3.5/docs/assets/js/vendor/holder.min.js"></script>
 	<script src="https://bootstrapdocs.com/v3.3.5/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
-	
+<!--	CSS LINKS		-->
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="bootstrap/bootstrap-social.css">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 </body>

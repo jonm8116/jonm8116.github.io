@@ -1,4 +1,5 @@
 /*THIS CSS FILE IS FOR ALL PAGES CONTAINED WITHIN THE PORTFOLIO SITE*/
+@import "bootstrap-social.css"
 #top-nav{
 	background-color: #101010;
 }
