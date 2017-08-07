@@ -1,46 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Twitch Streams</title>
-	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
-	<!--	SCRIPT TAGS		-->	
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../assets/js/custom.js"></script>
-	<style type="text/css">
-	body{
-		background-color: #222222;
-		color: white;
-	}
-	</style>
-</head>
-<body>
-	<div id="wrapper">
-		<div class="container-fluid">
-		<p class="lead">
-			<h3>Twitch Streams</h3>
-		</p>
-			<div class="row">
-				<div class="col-lg-2">
-				<h4>Offline Streams</h4>
-					<div id="offline-stream" class="list-group">
-					
-					</div>
-				</div>
-				<div class="col-lg-4">
-				<h4>Online Streams</h4>
-					<div id="online-stream" class="list-group">
-					
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
-	
-	<!--	JAVASCRIPT CODE HERE	-->
-	<script>
 	function getFCCStream(){
 		var fccStreamValid = 'https://wind-bow.glitch.me/twitch-api/streams/freecodecamp';
 		$.getJSON(fccStreamValid, function(data){
@@ -81,6 +38,3 @@
 	}
 	getFCCStream();
 	getBoxBoxStream();
-	</script>
-</body>
-</html>
