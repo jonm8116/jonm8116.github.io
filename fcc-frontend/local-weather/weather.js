@@ -31,7 +31,7 @@
 				
 				//lon = lon -50;	//debug statement
 									//
-				var apiCallString = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + "b0fd30f9894c1a2d70de6bcd9e5766c0";
+				var apiCallString = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + "b0fd30f9894c1a2d70de6bcd9e5766c0";
 				 $.getJSON( apiCallString, function( data ) {
 					
 					for(var i=0; i<data.weather.length; i++){
