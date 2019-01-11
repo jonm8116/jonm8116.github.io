@@ -1,219 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Hey!</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css";>
-	<link rel="stylesheet" href="bootstrap/carousel.css">
-	<style type="text/css">
-		#about-me-desc{
-
-			border-style: solid;
-			border-size: 20px;
-			color: white;
-			background-image: url(Images/bg4.jpg);
-			width: 100%;
-		}
-		
-		#xc{
-		
-		}
-		.carousel-inner{
-			height: 700px !important;
-			bottom: 0%;
-			background-color: black;
-		}
-		#disc{
-			color: white;
-		}
-		.soc-cent{
-			text-align: center;
-		}
-		.soc-med-list{
-			text-align: center;
-			list-style-type: none;
-			margin: 0;
-			padding: 0;
-			overflow: hidden;
-			
-		}
-		.soc-med-list > li{
-			display: inline-block;
-			zoom:1;
-			*display:inline;
-			padding: 5;
-		}
-		img{
-			height: 300px;
-			width: 500px;
-			border-radius: 5px;
-			text-align: center;
-		}
-	</style>
-	<script>
-		$(document).ready(function(){
-			$('a[href^="#"]').on('click', function(e){
-				
-				e.preventDefault();
-				var target = this.hash;
-				var $target = $(target);
-				
-				$('html, body').animate({
-					'scrollTop': $target.offset().top
-				}, 1000, 'swing');
-			})
-		
-		
-		});
-	</script>
+        <title>Jon's Website</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <style type="text/css">
+            #banner{
+                padding-left:25%;
+                padding-right:15%;
+                padding-top:20%;
+                padding-bottom:20%;
+                font-family: Courier New;
+            }
+            #subtitle{
+                padding-left:25%;
+                padding-right:15%;
+                font-family: Courier New;
+            }
+        </style>
 </head>
 <body>
-<!--	TOP NAVBAR FOR RESOURCE LINKS	-->
-	<nav class="navbar navbar-default navbar-fixed-top" id="top-nav">
-		<div class="container">
-			<ul class="nav navbar-nav">
-				<li><a href="index.html">Home</a></li>
-				<li><a href="#aboutme">About Me</a></li>
-				<li><a href="blog.html">Blog</a></li>
-				<li><a href="projects.html">Projects</a></li>
-				<li><a href="#socialmedia">Contact Me</a></li>
-			</ul>
-		</div>
-	</nav>
-<!--	CAROUSEL FOR IMG ROTATION IN SITE	-->
-	<div id="myCarousel" class="carousel slide" data-ride="carousel">
-		<!--<div class="picture">
-			<img class="img-responsive" id="first-banner" src="Images/solo_man.jpg" />
-		</div>-->
-		
-		<div class="carousel-inner" role="listbox">
-			<div class="item active">
-				<img class="first-slide" id="first-banner" src="Images/solo_man.jpg" />
-				<div class="container">
-					<div class="carousel-caption" id="carousel-first-block">
-						<h1>Welcome</h1>
-						<!--DESCRIPTION-->
-						<p>Hi my name is Jon</p>
-					</div>
-				</div>
-			</div>
-		</div>
+    <div id="banner" class="container-fluid">
+        <h1>Website Under Construction</h1>
+        <h6 id="subtitle">Coming soon</h6>
+    </div>
+    
 
-	<!--	SECOND COMPONENT	-->
-	 <div class="row featurette" id="disc">
-		<div class="col-md-7 col-md-push-5">
-		  <h2 class="featurette-heading">About Me</h2>
-		  <p class="lead">
-		  My name is Jonathan Mathai and I'm currently a computer science major on a premedical track at 
-			Stony Brook University. I'm a Long Island native and have thoroughly enjoyed my time growing up
-			here on the island. Before coming into college I wasn't entirely sure about my career path and 
-			where exactly I wanted to go with my life in the future. Choosing to major in computer science was 
-			a choice I made in part to seeing some of my friends in high school code. Seeing the software they 
-			were able to produce as the fruits of their labor piqued my interest in the field of computer science. 
-				</p>
-				<p class="lead">
-			At Stony Brook, I want to maximize most of my time into becoming the ideal person I wish to 
-			see myself as in the future. I wish to explore the many opportunities that the university 
-			has to offer and I hope to develop lifelong relationships here that I will carry with me after college. 
-			</p>
-				</p>
-		</div>
-		
-	  </div>
-	<!--	THIRD COMPONENT		-->
-	<div id="about-me-desc" class="container marketing">
-		<div id="xc" class="row">
-			<div class="col-lg-4">
-			<!--	Skills	-->
-			<h2>Skills</h2>
-				<p><h4>Intermediate</h4></p>
-				<ul>
-					<li>Java</li>
-					<li>HTML5/CSS</li>
-					<li>Git</li>
-					<li>Latex</li>
-					<li>JavaScript</li>
-				</ul>
-				<p><h4>Beginner</h4></p>
-				<ul>
-					<li>Python</li>
-					<li>PHP</li>
-					<li>MySQL</li>
-				</ul>
-			</div>
-			<div class="col-lg-4">
-				<h2>Hobbies</h2>
-				<ul>
-					<li>Drawing</li>
-					<li>Writing</li>
-					<li>Learning new things</li>
-					<li>Meeting new people</li>
-					<li>Travel</li>
-				</ul>
-			</div><!-- /.col-lg-4 -->
-			<div class="col-lg-4">
-				<h2>Interests</h2>
-				<ul>
-					<li>Web Development</li>
-					<li>Machine Learning</li>
-					<li>Engineering</li>
-					<li>Bioinformatics</li>
-					<li>Medicine</li>
-					<li>Psychology</li>
-					<li>Philosophy</li>
-				</ul>
-			</div><!-- /.col-lg-4 -->
-		  </div><!-- /.row -->
-		</div>
-		<!--	ANOTHER COMPONENT	-->
-		<div class="container-fluid">
-			<h2 class="soc-cent">Projects</h2>
-			<p class="lead soc-cent">
-			This was just a really dumb quick project I made
-			for the mhacks online hackathon. Didn't have too much
-			time to work on it that week. So this was made over around
-			5 hours.
-			</p>
-			<div class="picture soc-cent">
-				<img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/000/516/783/datas/gallery.jpg" />
-			</div>
-		</div>
-		<!--	NEXT COMPONENT	-->
-		<div class="container-fluid">
-			<div class="social-media">
-				<div class="container-fluid">
-				<h2 class="soc-cent">Social Media</h2>
-				<p class="lead soc-cent">
-					You can see more about what I'm doing here
-					<p></p>
-					<ul class="soc-med-list">
-						<li>
-						 <a class="btn btn-social-icon btn-sm btn-github" href="https://github.com/jonm8116">
-							<i class="fa fa-github"></i>
-						</a></li>
-						<li>
-						 <a class="btn btn-social-icon btn-sm btn-bitbucket" href="https://bitbucket.org/JonathanMathai219/">
-							<i class="fa fa-bitbucket"></i>
-						</a></li>
-						<li>
-						 <a class="btn btn-social-icon btn-sm btn-instagram" href="https://www.instagram.com/jonm831/">
-							<i class="fa fa-instagram"></i>
-						</a></li>
-					</ul>
-				</p>
-				</div>
-			</div>
-		</div>
-	</div>
-<!--	SCRIPT TAGS		-->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://bootstrapdocs.com/v3.3.5/docs/dist/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="https://bootstrapdocs.com/v3.3.5/docs/assets/js/vendor/holder.min.js"></script>
-	<script src="https://bootstrapdocs.com/v3.3.5/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
-<!--	CSS LINKS		-->
-	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="bootstrap/bootstrap-social.css">
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 </body>
+<html>
