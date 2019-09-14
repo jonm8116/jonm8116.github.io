@@ -6,8 +6,6 @@ permalink: /about/
 <div>
   <h3 style="font-family: Shojumaru; font-size:100pt;
   text-align: center;"><em>jmat</em></h3>
-  :q
-:q
   <!-- <img class="about-pic-container"
   src="../assets/fb_pro_pic.jpg" />  
    <br/><br/><br/> -->
