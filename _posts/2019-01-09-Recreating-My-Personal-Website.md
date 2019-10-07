@@ -9,8 +9,8 @@ author: Jon Mathai
 
 So this is about the third time I've worked on creating a
 personal website. The first time I created my website was in
-my freshman year in college as a means of trying to create a
-portfolio and trying to test my news coding chops. This is
+my freshman year of college as a means of trying to create a
+portfolio and trying to test some coding skill. This is
 an image of what the site initially looked like. 
 <div>
    <img src="../../../assets/imgs/website1.PNG" />
@@ -40,8 +40,8 @@ This site is a bit different than the first but there are a
 few shared aspects. The first commonality between the sites
 is the horizontal navbar on the top of both sites. The
 second is that both of my sites have a welcome banner for
-whoever may be visiting my site. It slightly makes me cringe
-but I also feel like its needed for a personal website.
+whoever may be visiting my site. The banner in the v2 of my site makes me cringe
+but I also felt it was needed for a personal website at the time.
 After going through two iterations for this site and looking
 at dozens and dozens of other personal websites on the
 Internet I think I've started to learn some of the design
