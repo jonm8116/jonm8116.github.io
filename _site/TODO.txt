@@ -1,0 +1,7 @@
+TODO:
+1. Start putting links on to resource page
+2. Put up the slides review you helped create from CSE 219
+3. Add blog post on YT trending classifier 
+4. Blog post on brightening imagese
+5. Add time read script for blog posts
+6. Create dark theme
