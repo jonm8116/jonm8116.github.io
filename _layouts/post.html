@@ -5,7 +5,10 @@ layout: default
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline"><a class="post-title-link"  href="{{page.url}}">{{ page.title }}</a></h1>
-  <center>  <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time></p>
+  <center>  <p class="post-meta"><time datetime="{{
+  page.date | date_to_xmlschema }}"
+  itemprop="datePublished">{{ page.date | date: "%b %-d, %Y"
+  }}</time> &#9672; <span id="readTime"></span></p>
     {% if page.author %}
      <div class="">
        <center><p ><strong><span class="authorKeyword">Author</span><span class="small-site-title"> <h2 style="letter-spacing: 3px !important;
@@ -32,6 +35,6 @@ layout: default
     </a>
   {% endif %}
   </footer>
-
+  <script src="../../../assets/js/timeToRead.js"></script>
 
 </article>
