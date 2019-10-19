@@ -6,6 +6,7 @@ author: Jon Mathai
 ---
 Dear Impact Labs Fellowship,
 <br/><br/>
+<!-- Make first line less reptitive   -->
 I wanted to write this letter to talk about something I
 didn't get to talk about in my application (mainly because I
 was afraid the story would be a bit too long for the form).
@@ -22,7 +23,7 @@ group left the station and sat down with two to three people
 before we came to the outskirts of Central Park. Once we
 arrived at that intersection we sat down with another man
 who was seated right outside of the building next to us.
-Let's call this man Micah for simplicity sake. Prior to our
+Let's call this man Micah for simplicity's sake. Prior to our
 lunch with Micah my group had some difficulty in our
 previous lunches with the homeless. Many were appreciative
 of the lunches we provided but didn't feel as comfortable
@@ -75,17 +76,17 @@ I just suggested Micah to look into freelancing sites since
 he had skills that could help him land a job. I gave some
 examples of freelancing sites he could check out and he
 thanked me for the tips as we left to continue with our
-lunches through the city. Then we didn't see Micah any other
-time later that day and yet that question I had back then is
-still something I ask myself. What else could we have done
-back then.
+lunches through the city. That was the last time I saw
+Micah but that wasn't the last time I thought about him. 
+Even now I ask myself "Was there anything else we could have
+done?"
 <br/><br/>
-Micah's problem was something that was personal to him but
-his issue wasn't something only unique to him. To deal with
-a macroscopic issue a larger approach needs to be taken. A
-single meal can do a lot for a person but to fix this larger
-scale issue is the harder answer to find. Back then as a
-freshman in computer science, my understanding of how I
+Micah's problems may be his own but his circumstances are
+certainly not unique. It was a humbling moment to realize
+that a single bagged lunch won't fix this greater issue of
+homelessness. I do believe a single meal can go a long way
+but a larger solution will be needed to fix this macroscopic
+issue. Back then as a freshman in computer science, my understanding of how I
 could help with these larger issues was much more limited.
 Now that I've gotten the chance to learn so much more and
 broadened my worldview I'm better equipped to start tackling
