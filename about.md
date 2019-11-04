@@ -11,13 +11,12 @@ permalink: /about/
    <br/><br/><br/> -->
   <div class="excerpt-container">
    <p></p>
-        Hi my name is Jon and I'm a computer scientist,
+        Hi, my name is Jon, and I'm a computer scientist,
         software engineer, athlete, writer, and college student. I
         currently am a research assistant in
         my school's computer science department. Outside of
-        school I teach kids how to code at my part time job 
-        and am a developer for Elixir Labs a nonprofit that 
-        creates software for other nonprofits. Previously I 
+        school, I am a developer for Elixir Labs a nonprofit that 
+        creates software for other nonprofits. Previously, I 
         was a software engineering intern at LBi Software 
         and a teaching assistant for my school's introduction 
         to software development course.
@@ -33,7 +32,9 @@ permalink: /about/
    <h2>Projects</h2>
    <ul>
 
-   <li>2019 &emsp; Personal Website
+   <li>2019 &emsp; 
+   <a href="https://github.com/jonm8116/jonm8116.github.io">
+   Personal Website</a>
    <br/>
    
    <div class="proj-desc">
@@ -54,7 +55,9 @@ permalink: /about/
 
    <br/>
 
-   <li>2019 &emsp; Overdrive Comics
+   <li>2019 &emsp; 
+   <a href="https://github.com/artvegas/overdrive_frontend">
+   Overdrive Comics</a>
    <br/>
 
    <div class="proj-desc">
@@ -77,7 +80,10 @@ permalink: /about/
 
    <br/>
 
-   <li>2018 &emsp; YouTube Trending Videos Classifier
+   <li>2018 &emsp; 
+   <a
+   href="https://github.com/jonm8116/YouTube-Trending-Project">
+   YouTube Trending Videos Classifier</a>
    
    <br/>
    <div class="proj-desc">
@@ -115,7 +121,10 @@ permalink: /about/
    <br/>
    </div>
 
-   <li>2017 &emsp; Course Site Generator</li>
+   <li>2017 &emsp; 
+   <a
+   href="https://github.com/jonm8116/Course-Site-Generator">
+   Course Site Generator</a></li>
 
    </ul>
 
