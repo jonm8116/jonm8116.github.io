@@ -4,7 +4,7 @@ title: "Advent Of Code 2019 And Other Things"
 date: 2019-12-17
 author: Jon Mathai
 ---
-So we're about a quarter of the way through December and Advent of Code is well underway. For those are unfamiliar of what Advent of code is you can check out the site <a href="https://adventofcode.com">here</a>. I have started to give a crack at some of the problems. Unfortunately I haven't made as much progress on them as I'd like (I've only gotten around to the first two problems) but I'm planning to catch up on them. Just things have been a little crazy with finishing up this semester and sending out applications. So soon I'll hopefully be able to catch up with everyone else who's participating in AOC this year. 
+So we're more than halfway through December and Advent of Code is well underway. For those are unfamiliar of what Advent of code is you can check out the site <a href="https://adventofcode.com">here</a>. I have started to give a crack at some of the problems. Unfortunately I haven't made as much progress on them as I'd like (I've only gotten around to the first two problems) but I'm planning to catch up on them. Just things have been a little crazy with finishing up this semester and sending out applications. So soon I'll hopefully be able to catch up with everyone else who's participating in AOC this year. 
 <br/><br/>
 However I wanted to encourage everyone who has currently been working through advent of code and let y'all know about some other advent themed software content I found on the internet. 
 
