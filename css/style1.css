@@ -67,3 +67,6 @@ a{
 .classlist li{
     list-style: none;
 }
+.icon-img{
+    font-size: 50pt !important;
+}
