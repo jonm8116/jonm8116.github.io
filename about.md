@@ -26,8 +26,7 @@ permalink: /about/
         Fantasy Writing, Physics, Logic Puzzles, Math
         Simulations, Soccer, Basketball, and Volleyball.
    <p></p>
-        Below I have my projects and future endeavors goals
-        listed.
+        Below I have some of the projects I've worked on.
    <br/><br/><br/>
    <h2>Projects</h2>
    <ul>
