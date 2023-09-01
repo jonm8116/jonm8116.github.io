@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Building A Classifier For Trending Videos</title>
+  <meta name="description" content="Quick Disclaimer: This is my first technical blog postso bear with me as I learn how to write technical blogposts.">
+  <!-- added fonts google fonts below -->
+  
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!-- add additional stylesheet below -->
+  <link rel="stylesheet" href="/css/style1.css">
+  <link rel="stylesheet" href="/css/devicon/devicon.min.css">
+
+  <link rel="canonical" href="http://localhost:4000/2019/10/13/Building-A-Classifier-For-Trending-Videos.html">
+  <link rel="alternate" type="application/rss+xml" title="Jon Mathai" href="http://localhost:4000/feed.xml">
+</head>
+
+
+  <body class=" light  ">
+
+    
+<div class="wrapper">
+  <center> <a href="/index.html"><div class="site-title">   Jon Mathai </div></a></center>
+</div>
+<div class="wrapper site-description">
+<center>  Optimistic Idealist </center>
+</div>
+<div class="wrapper">
+  <div class="trigger site-navigation">
+    <a class="page-link" href="http://localhost:4000">HOME</a>
+
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/about/">About</a>
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/blog.html">blog</a>
+    
+    
+    
+    
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/resources/">Resources</a>
+    
+    
+    
+    
+    
+    
+    
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/writing/">Writing</a>
+    
+    
+    
+    
+  </div>
+</div>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline"><a class="post-title-link"  href="/2019/10/13/Building-A-Classifier-For-Trending-Videos.html">Building A Classifier For Trending Videos</a></h1>
+  <center>  <p class="post-meta"><time datetime="2019-10-13T00:00:00-04:00"
+  itemprop="datePublished">Oct 13, 2019</time> &#9672; <span id="readTime"></span></p>
+    
+     <div class="">
+       <center><p ><strong><span class="authorKeyword">Author</span><span class="small-site-title"> <h2 style="letter-spacing: 3px !important;
+       text-transform: uppercase !important;">Jon Mathai</h2></span></strong></p></center>
+
+     </div>
+     
+   </center>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p><em>Quick Disclaimer: This is my first technical blog post
+so bear with me as I learn how to write technical blog
+posts.</em></p>
+
+<h1>Quick Background</h1>
+<p>The YouTube algorithm is a mysterious bit of software that many users often ponder over
+<em>“Why did this up in my recommended? Why did this pop up
+on my feed?”</em>. In this blog post we won’t be able to
+replicate the YouTube algorithm but we may be able to mimic
+how YouTube picks it’s trending videos. 
+So I created this project with a two friends of mine and it
+was our first main venture into data science and machine
+learning but something we did happen to learn a lot from. 
+<br /><br /></p>
+<h1>Getting the Data</h1>
+<p>So first we need to have a dataset to work with. There are
+two ways we can go about this.</p>
+<ol>
+    <li>Find an existing dataset</li>
+    <li>Build our dataset</li>
+</ol>
+<p>Among my friends and I we actually decided to do both. We
+had found an existing online at Kaggle. <a href="https://www.kaggle.com/datasnaek/youtube-new"> Here is
+one existing dataset that could be used.</a> Similar
+datasets could be found online at <a href="https://www.kaggle.com/datasets">
+Kaggle</a>.
+<br /><br />
+To get a larger sized dataset we need to scrape YouTube for
+trending videos. When I did this with friends we were able
+to scrape the Popular on YouTube channel for video id’s of
+those trending videos. Now I believe it’s a little harder to
+scrape the video page on that channel. However, you should
+be able to scrape the videos on the trending tab for the
+video id’s. Once you have the list of video id’s you can use
+<a href="https://developers.google.com/youtube/v3">
+YouTube’s Data API</a> to query for data about each individual
+video using it’s video id. Here’s a code snippet of how to
+query the video data.
+<br /></p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">urllib</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="n">api_key</span><span class="o">=</span><span class="s">'&lt;insert-your-api-key-here&gt;'</span>
+
+<span class="k">def</span> <span class="nf">getVideoStats</span><span class="p">(</span><span class="n">api_key</span><span class="p">):</span>
+    <span class="n">dataframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'location-to-csv-with-video-ids'</span><span class="p">)</span>
+    <span class="n">listofIds</span> <span class="o">=</span> <span class="n">dataframe</span><span class="p">[</span><span class="s">'URL'</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+    <span class="n">video_id</span> <span class="o">=</span> <span class="n">listofIds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># just pick one id for the time being
+</span>    <span class="n">searchUrl</span> <span class="o">=</span> <span class="s">'https://www.googleapis.com/youtube/v3/videos?id='</span><span class="o">+</span><span class="n">video_id</span><span class="o">+</span><span class="s">'&amp;key='</span><span class="o">+</span><span class="n">api_key</span><span class="o">+</span><span class="s">'&amp;part=statistics,snippet'</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">searchUrl</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">'latin-1'</span><span class="p">)</span>
+    <span class="n">jsoninfo</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">jsoninfo</span></code></pre></figure>
+
+<p><br />
+That snippet describes how to retrieve data about a single
+YouTube video. You can run the api call in a loop in order
+to get data for all of the youtube videos. One small tip to
+speed up the process would be to continually append video
+id’s to a single string. Then pass in that string as the
+video id and the api would make one request for the amount
+of video id’s you passed in (the max being 50 id’s per
+request). You’ll want to write the data to a csv file so
+that it can be read into a pandas dataframe when you need to
+process it. After you’ve gotten all of the video data for
+trending videos you need to repeat the process for
+nontrending videos. One simple way to do that would be to go
+to do different YouTube channels and scrape that channel for
+videos. However, you should be careful about what kinds of
+videos you’re scraping. For instance many trending videos
+will have higher view counts. So if you’re nontrending
+dataset consists of videos from really small channels that
+have around 1k views each, then that would skew your
+dataset. So pick YouTube channels with reasonable metrics
+when it comes to their videos.
+<br /><br /></p>
+<h1>Creating and training the model</h1>
+<p>Once your file has its all of its entries of video data. You
+can start going about building your model for training. My
+friends and I ended up using the tensorflow framework to
+build our neural network. The reason being was that it was
+quite easy to get a model up and working relatively quickly.
+<br /><br />
+We ended up defining our model as so.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="n">kernel_regularizer</span><span class="o">=</span><span class="n">keras</span><span class="o">.</span><span class="n">regularizers</span><span class="o">.</span><span class="n">l2</span><span class="p">(</span><span class="mf">0.01</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="n">kernel_regularizer</span><span class="o">=</span><span class="n">keras</span><span class="o">.</span><span class="n">regularizers</span><span class="o">.</span><span class="n">l2</span><span class="p">(</span><span class="mf">0.01</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="n">kernel_regularizer</span><span class="o">=</span><span class="n">keras</span><span class="o">.</span><span class="n">regularizers</span><span class="o">.</span><span class="n">l2</span><span class="p">(</span><span class="mf">0.01</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">AdamOptimizer</span><span class="p">(),</span> <span class="n">loss</span><span class="o">=</span><span class="s">'sparse_categorical_crossentropy'</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s">'accuracy'</span><span class="p">],</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">early_stop</span><span class="p">])</span></code></pre></figure>
+
+<p><br /></p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">bs4</span> 
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://www.youtube.come/feed/trending'</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">);</span> <span class="n">html</span><span class="o">=</span><span class="n">client</span><span class="o">.</span><span class="n">read</span><span class="p">();</span> <span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">pageSoup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="p">,</span> <span class="s">'html.parser'</span><span class="p">)</span>
+<span class="n">aTags</span> <span class="o">=</span> <span class="n">pageSoup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">'a'</span><span class="p">,</span> <span class="n">href</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">newlist</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">aTags</span><span class="p">)):</span>
+    <span class="k">if</span><span class="p">(</span><span class="s">'watch'</span> <span class="ow">in</span> <span class="n">aTags</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s">'href'</span><span class="p">]):</span>
+        <span class="n">newlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">aTags</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="c1"># this is pretty inefficient but for the purpose of what
+# we're doing it's okay
+# now you can access each url by looping through newlist and accessing
+# newlist[i]['href']</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">standardizeData</span><span class="p">(</span><span class="n">fullSubset</span><span class="p">):</span>
+    <span class="n">matrixData</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">fullSubset</span><span class="p">)</span>
+    <span class="n">matrixData</span> <span class="o">=</span> <span class="n">matrixData</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s">'float32'</span><span class="p">)</span>
+    <span class="n">matrixData</span> <span class="o">-=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">matrixData</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">matrixData</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">matrixData</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">trendingSet</span> <span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'../data/new-datasets/trending_dataset.csv'</span><span class="p">)</span>
+<span class="n">nontrendingSet</span> <span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'../data/new-datasets/nontrending_dataset.csv'</span><span class="p">)</span>
+<span class="n">trendingDf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">trendingSet</span><span class="p">)</span>
+<span class="n">nontrendingDf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">nontrendingSet</span><span class="p">)))))</span>
+
+<span class="n">subsetTrending</span> <span class="o">=</span> <span class="n">trendingDf</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">6000</span><span class="p">)</span>
+<span class="n">subsetNontrending</span> <span class="o">=</span> <span class="n">nontrendingDf</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">subsetTrending</span><span class="p">))</span>    
+
+<span class="c1">#Test dataset
+</span><span class="n">trendingTestSet</span> <span class="o">=</span><span class="n">trendingDf</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">400</span><span class="p">:]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'tags'</span><span class="p">,</span><span class="s">'trending'</span><span class="p">,</span><span class="s">'duration'</span><span class="p">,</span><span class="s">'video_id'</span><span class="p">,</span><span class="s">'video_title'</span><span class="p">],</span>
+<span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">nontrendingTestSet</span> <span class="o">=</span> <span class="n">nontrendingDf</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">400</span><span class="p">:]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'tags'</span><span class="p">,</span><span class="s">'trending'</span><span class="p">,</span><span class="s">'duration'</span><span class="p">,</span><span class="s">'video_id'</span><span class="p">,</span><span class="s">'video_title'</span><span class="p">],</span>
+<span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">totaldf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">trendingTestSet</span><span class="p">,</span> <span class="n">nontrendingTestSet</span><span class="p">])))))))</span>
+<span class="n">nonTrendingTrainSet</span> <span class="o">=</span> <span class="n">nontrendingDf</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">14000</span><span class="p">)</span>
+
+<span class="n">scaleMatrixData</span> <span class="o">=</span><span class="n">standardizeData</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">subsetTrending</span><span class="p">,</span><span class="n">subsetNontrending</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">scaleMatrixData</span><span class="p">,</span> <span class="n">trendingLabels</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">videoId</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">getOneVideoStats</span><span class="p">(</span><span class="n">videoId</span><span class="p">,</span><span class="n">apiKey</span><span class="p">))</span>
+<span class="n">prediction</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">video</span><span class="p">)</span></code></pre></figure>
+
+
+  </div>
+
+  <footer class="postNavigation">
+  
+    <a class="postPrev" href="/2019/01/09/Recreating-My-Personal-Website.html">
+        &laquo; Recreating My Personal Website
+    </a>
+  
+  
+    <a class="postNext" href="/2019/10/18/Dear-Impact-Labs-Fellowship.html">
+        Dear Impact Labs Fellowship &raquo;
+    </a>
+  
+  </footer>
+  <script src="../../../assets/js/timeToRead.js"></script>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading small-site-title">Jon Mathai</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list footer-content">
+          <li>Powered By <a href="http://github.com/hemangsk/Gravity">Gravity</a></li>
+          <li>Made with <i class="fa fa-heart"></i> on <a href="http://jekyllrb.com"><span>{ { Jekyll } }</a></span></li>
+
+
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2 footer-content">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jonm8116"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">jonm8116</span></a>
+
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3 site-description">
+        <p>Optimistic Idealist</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
